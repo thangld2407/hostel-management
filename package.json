@@ -1,0 +1,22 @@
+{
+  "name": "hostel-management",
+  "version": "1.0.0",
+  "description": "## Project setup ``` npm install ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js --prefix server --ignore 'client/'",
+    "watch": "npm run serve --prefix client",
+    "lint": "npm run lint --fix --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thangld2407/hostel-management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thangld2407/hostel-management/issues"
+  },
+  "homepage": "https://github.com/thangld2407/hostel-management#readme"
+}
