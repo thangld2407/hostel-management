@@ -6,7 +6,8 @@ const brcypt = require('bcrypt');
 const register = (async (req, res) => {
     const {
         username,
-        password
+        password,
+        role
     } = req.body;
 
     try {
@@ -27,16 +28,19 @@ const register = (async (req, res) => {
             let hash = brcypt.hashSync(password,saltRound );
             const newAcount = new account({
                 username: username,
-                password: hash
+                password: hash,
+                role: role
             })
             console.log(newAcount.password);
             console.log(newAcount);
 
             newAcount.save();
             res.json({
+                status: 200,
                 message: 'Register successfully',
                 username: newAcount.username,
-                password: newAcount.password
+                password: newAcount.password,
+                role: newAcount.role || 'Customer'
             })
         }
     } catch (err) {
@@ -51,9 +55,15 @@ const login = async (req, res)=>{
         algorithm: "HS256",
         expiresIn: configJWT.accessTokenLife,
       });
+      console.log(payload);
     res.json({
-        access_token: access_token,
-        message: 'Login successfully'
+        data: {
+            status: 200,
+            access_token: access_token,
+            userId: userId,
+            username: '',
+            message: 'Login successfully'
+        }
     })
 }
 module.exports = {
