@@ -22,7 +22,7 @@
                     <b-form-input
                       :placeholder="$t('LOGIN.PLACEHOLDER_ACCOUNT')"
                       spellcheck="false"
-                      name="email"
+                      name="username"
                       autocomplete="off"
                       v-model="USER.email"
                     />
@@ -68,8 +68,9 @@
   </div>
 </template>
 <script>
-import { MakeToast } from "../../toast/MakeToast";
-import { validEmail, validPassword } from "../../utils/validation";
+// import { MakeToast } from "../../toast/MakeToast";
+// import { validEmail, validPassword } from "../../utils/validation";
+import { authentication } from "../../api/index";
 export default {
   name: "Login",
   data() {
@@ -83,32 +84,12 @@ export default {
     };
   },
   methods: {
-    doLogin() {
-      this.isProcess = true;
-      if (!validEmail(this.USER.email)) {
-        MakeToast({
-          variant: "danger",
-          title: "Login Fail",
-          content: "Incorrect Email",
-        });
-      } else if (!validPassword(this.USER.password)) {
-        MakeToast({
-          variant: "danger",
-          title: "Login Fail",
-          content: "Password must be length 8 -16 character",
-        });
-      } else {
-        const account = {
-          email: this.USER.email,
-          password: this.USER.password,
-        };
-        console.log(account);
-        MakeToast({
-          variant: "success",
-          title: "Login Successfully",
-          content: "Login Successfully",
-        });
-      }
+    async doLogin() {
+      const DATA = {
+        username: this.USER.email,
+        password: this.USER.password,
+      };
+      await authentication(DATA);
     },
   },
 };
