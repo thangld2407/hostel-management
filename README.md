@@ -1,24 +1,25 @@
-# client
 
 ## Project setup
+
+### Client 
+```
+cd client 
+```
+
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Server configuration
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+cd server
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### run server on PORT 3000
+```
+nodemon server.js
+```
