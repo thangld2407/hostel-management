@@ -1,28 +1,24 @@
 const mongoose = require("mongoose");
 
-const account = new mongoose.Schema({
+const issue = new mongoose.Schema({
+  issue_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  issue_content: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   user_id: {
     type: String,
-    required: true,
-  },
-  username: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  password: {
-    type: String,
-    trim: true,
     required: true,
   },
   create_at: {
     type: Date,
     required: true,
   },
-  update_at: {
-    type: Date,
-    required: true,
-  },
 });
 
-module.exports = mongoose.model("account", account);
+module.exports = mongoose.model("issue", issue);
