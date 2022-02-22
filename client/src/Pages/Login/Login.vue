@@ -89,7 +89,13 @@ export default {
         username: this.USER.email,
         password: this.USER.password,
       };
-      await authentication(DATA);
+      try {
+        const res = await authentication(DATA);
+        console.log(res);
+      } catch (e) {
+        console.log(e.response);
+        
+      }
     },
   },
 };
